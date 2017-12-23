@@ -1,0 +1,47 @@
+﻿<Window x:Class="QuranTafseerWPFDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuranTafseerWPFDemo"
+        mc:Ignorable="d" Loaded="Window_Loaded" FlowDirection="RightToLeft"
+        Title="QuranTafseer CSharp Client WPF Demo" Height="377.022" Width="815.809" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Name="lbSuraList" SelectionChanged="lbSuraList_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox Grid.Column="1" Name="lbAyahList" SelectionChanged="lbAyahList_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding AyahNumber}" Foreground="Red"/>
+                        <TextBlock Text="   "/>
+                        <TextBlock Text="{Binding Text}" Foreground="Green"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="2">
+            <ComboBox Name="comTafseer" SelectionChanged="comTafseer_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Grid.Column="2" Name="tbTafseer" Foreground="Blue" FontSize="14" TextWrapping="Wrap" Margin="3"/>
+        </StackPanel>
+    </Grid>
+</Window>
