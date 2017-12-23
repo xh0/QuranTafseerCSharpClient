@@ -10,7 +10,7 @@ namespace QuranTafseer
     [JsonObject()]
     public class Sura
     {
-        [JsonProperty(PropertyName ="index")]
+        [JsonProperty(PropertyName = "index")]
         public int Index { get; set; }
 
         [JsonProperty(PropertyName = "name")]
@@ -20,7 +20,7 @@ namespace QuranTafseer
         {
 
         }
-        public Sura(int index,string name)
+        public Sura(int index, string name)
         {
             this.Index = index;
             this.Name = name;

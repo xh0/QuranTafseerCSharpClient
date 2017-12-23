@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace QuranTafseerWPFDemo
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         QuranTafseer.Client _tc = new QuranTafseer.Client();
@@ -31,7 +28,7 @@ namespace QuranTafseerWPFDemo
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             comTafseer.ItemsSource = await _tc.GetAvailableTafseersListAsync();
-            comTafseer.SelectedIndex =0;
+            comTafseer.SelectedIndex = 0;
             lbSuraList.ItemsSource = await _tc.GetSuraListAsync();
         }
 
@@ -43,7 +40,7 @@ namespace QuranTafseerWPFDemo
             List<QuranTafseer.Verse> verses = new List<QuranTafseer.Verse>();
 
 
-            int i=0;
+            int i = 0;
             try //TODO: Use QuranAsyncReader class insted
             {
                 while (true)
@@ -56,8 +53,6 @@ namespace QuranTafseerWPFDemo
             catch { }
 
             lbAyahList.ItemsSource = verses;
-            
-
         }
 
         private void comTafseer_SelectionChanged(object sender, SelectionChangedEventArgs e)
