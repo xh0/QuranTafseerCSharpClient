@@ -17,7 +17,7 @@ namespace QuranTafseerWPFDemo
 {
     public partial class MainWindow : Window
     {
-        QuranTafseer.Client _tc = new QuranTafseer.Client();
+        QuranTafseer.Client client = new QuranTafseer.Client();
         int _CurrentTafsserId;
 
         public MainWindow()
@@ -27,9 +27,9 @@ namespace QuranTafseerWPFDemo
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            comTafseer.ItemsSource = await _tc.GetAvailableTafseersListAsync();
+            comTafseer.ItemsSource = await client.GetAvailableTafseersListAsync();
             comTafseer.SelectedIndex = 0;
-            lbSuraList.ItemsSource = await _tc.GetSuraListAsync();
+            lbSuraList.ItemsSource = await client.GetSuraListAsync();
         }
 
         private async void lbSuraList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,7 +46,7 @@ namespace QuranTafseerWPFDemo
                 while (true)
                 {
                     i++;
-                    QuranTafseer.Verse v = await _tc.GetVerseDetails(SuraNumbr, i);
+                    QuranTafseer.Verse v = await client.GetVerseDetails(SuraNumbr, i);
                     verses.Add(v);
                 }
             }
@@ -68,7 +68,7 @@ namespace QuranTafseerWPFDemo
         {
             if (lbAyahList.SelectedItem == null) return;
 
-            tbTafseer.Text = (await _tc.GetVerseTafseerAsync(_CurrentTafsserId, (lbSuraList.SelectedItem as QuranTafseer.Sura).Index, (lbAyahList.SelectedItem as QuranTafseer.Verse).AyahNumber)).Text;
+            tbTafseer.Text = (await client.GetVerseTafseerAsync(_CurrentTafsserId, (lbSuraList.SelectedItem as QuranTafseer.Sura).Index, (lbAyahList.SelectedItem as QuranTafseer.Verse).AyahNumber)).Text;
         }
     }
 }
